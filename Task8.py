@@ -1,39 +1,46 @@
 import math
 import random
 class Calc:
+    def put_numbers(self, num1, num2):
+        self.x = num1
+        self.y = num2
+
+    def put_number(self, num1):
+        self.x = num1
+
     def operations(self, sign):
-        if sign in ('+', '-', '*', '/', '^'):
-            x = float(input("x="))
-            y = float(input("y="))           
+        if sign in ('+', '-', '*', '/', '^'):           
             if sign == '+':
-                return print(x + y)
+                return print(self.x + self.y)
             elif sign == '-':
-                 return print(x - y)
+                 return print(self.x - self.y)
             elif sign == '*':
-                return print(x * y)
+                return print(self.x * self.y)
             elif sign == '/':
-                if y == 0:
+                if self.y == 0:
                     return print("Деление на 0.")
                 else:
-                    return print(x / y)
+                    return print(self.x / self.y)
             elif sign == '^':
-                 return print(math.pow(x, y))
+                 return print(math.pow(self.x, self.y))
+
         elif sign in ("abs", "!", "arccos"):
-            x = float(input("x="))
             if sign == "abs":
-                return print(math.fabs(x))
+                return print(math.fabs(self.x))
             elif sign == '!':
-                return print(math.factorial(x))
-            elif sign == "arccos":                 
-                return print(math.acos(x))          
+                return print(math.factorial(self.x))
+            elif sign == "arccos":     
+                if self.x >= -1 and self.x <= 1:
+                    return print(math.acos(self.x))     
+                else:
+                    return print("Число должно находится в диапозоне от -1 до 1")
         elif sign == "rand":
-            return print(random.random())            
-        else:
-            print("Неверный знак операции!")
-        print("\n")
+            return print(random.random())    
+        else: 
+            return print("Неправильный знак!\n")
 
 while True:
-    print("Ноль в качестве знака операции"
+    print("\nНоль в качестве знака операции"
           "\nзавершит работу программы\n")
     sign = input("Знак (+,-,*,/, ^(для степени),"
                  "\nabs(для модуля), !(для факториала), arccos(для аркосинуса)(-1 до 1)," 
@@ -42,5 +49,11 @@ while True:
     if sign == '0':
         break
     calc = Calc()
+    if sign in ('+', '-', '*', '/', '^'): 
+        calc.put_numbers(float(input("x=")), float(input("y=")))
+    elif sign in ("abs", "!", "arccos"):
+        calc.put_number(float(input("x=")))
+
     calc.operations(sign)
    
+
