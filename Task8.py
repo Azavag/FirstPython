@@ -49,7 +49,7 @@ while True:
     if sign in ('+', '-', '*', '/', '^'): 
         calc.put_numbers(float(input("x=")), float(input("y=")))
     elif sign in ("abs", "!", "arccos"):
-        calc.put_number(float(input("x=")))
+        calc.put_numbers(float(input("x=")))
 
     calc.operations(sign)
    
