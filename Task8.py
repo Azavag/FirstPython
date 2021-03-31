@@ -1,12 +1,9 @@
 import math
 import random
 class Calc:
-    def put_numbers(self, num1, num2):
+    def put_numbers(self, num1, num2 = 0):
         self.x = num1
         self.y = num2
-
-    def put_number(self, num1):
-        self.x = num1
 
     def operations(self, sign):
         if sign in ('+', '-', '*', '/', '^'):           
